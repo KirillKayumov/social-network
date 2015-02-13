@@ -1,4 +1,8 @@
 class ProfilesController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update]
+  before_action :require_permission, only: [:edit, :update]
+  skip_before_action :completed_profile?, only: [:edit, :update]
+
   expose(:profile, attributes: :profile_params)
 
   def show
@@ -27,5 +31,9 @@ class ProfilesController < ApplicationController
       :city,
       :mobile
     )
+  end
+
+  def require_permission
+    redirect_to profile_path(current_user.profile) if profile.user != current_user
   end
 end
