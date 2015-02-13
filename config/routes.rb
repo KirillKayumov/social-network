@@ -5,4 +5,6 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+
+  resources :profiles, only: [:show, :edit, :update]
 end

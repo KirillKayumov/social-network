@@ -1,0 +1,37 @@
+ru:
+  sign_in: 'Войти'
+  sign_up: 'Зарегистрироваться'
+  helpers:
+    submit:
+      profile:
+        update: 'Сохранить изменения'
+  activerecord:
+    models:
+      profile: Профиль
+    attributes:
+      profile:
+        first_name: 'Имя'
+        last_name: 'Фамилия'
+        sex: 'Пол'
+        birthday: 'День рождения'
+        country: 'Страна'
+        city: 'Город'
+        mobile: 'Мобильный телефон'
+  date:
+    month_names:
+      - Январь
+      - Февраль
+      - Март
+      - Апрель
+      - Май
+      - Июнь
+      - Июль
+      - Август
+      - Сентябрь
+      - Октябрь
+      - Ноябрь
+      - Декабрь
+    order:
+      - :day
+      - :month
+      - :year

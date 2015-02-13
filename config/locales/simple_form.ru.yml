@@ -1,25 +1,22 @@
-en:
+ru:
   simple_form:
-    "yes": 'Yes'
-    "no": 'No'
+    "yes": 'Да'
+    "no": 'Нет'
     required:
       text: 'required'
       mark: ''
-      # You can uncomment the line below if you need to overwrite the whole required html.
-      # When using html, text and mark won't be used.
-      # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Please review the problems below:"
     labels:
       user:
         email: 'Email'
-        password: 'Password'
-        password_confirmation: 'Password confirmation'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
     options:
       profile:
         sex:
-          male: 'Male'
-          female: 'Female'
+          male: 'Мужской'
+          female: 'Женский'
     # Labels and hints examples
     # labels:
     #   defaults:

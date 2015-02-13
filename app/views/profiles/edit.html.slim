@@ -1,0 +1,9 @@
+= simple_form_for profile do |f|
+  = f.input :first_name
+  = f.input :last_name
+  = f.input :sex, collection: ProfileDecorator::SEXES
+  = f.input :birthday
+  = f.input :country, as: :string
+  = f.input :city, as: :string
+  = f.input :mobile
+  = f.button :submit
