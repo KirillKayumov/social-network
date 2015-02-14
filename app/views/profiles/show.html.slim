@@ -1,7 +1,7 @@
 = link_to Profile.model_name.human, edit_profile_path
 = link_to t('sign_out'), destroy_user_session_path
 
-- if profile.user != current_user
+- if profile != current_user.profile
   - if friendship.accepted?
     = t('you_are_friends')
     = link_to t('remove_friend'), friendship_path(friendship), method: :delete

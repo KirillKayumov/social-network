@@ -2,7 +2,8 @@ class FriendshipsController < ApplicationController
   before_action :authenticate_user!
 
   expose(:friendship)
-  expose(:friends) { Profile.find(params[:profile_id]).user.accepted_friends }
+  expose(:profile) { Profile.find(params[:profile_id]) }
+  expose(:friends) { profile.user.accepted_friends }
   expose(:decorated_friends) { friends.decorate }
 
   def index

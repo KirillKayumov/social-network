@@ -3,3 +3,10 @@ ul
   - decorated_friends.each do |friend|
     li
       = link_to friend.full_name, profile_path(friend.profile)
+      = link_to t('friends_of_friend'), profile_friendships_path(friend.object.profile)
+      - if profile == current_user.profile
+        = link_to( \
+          t('remove_friend'), \
+          friendship_path(current_user.friendship_with(friend.object)), \
+          method: :delete \
+        )

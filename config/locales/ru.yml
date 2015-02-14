@@ -8,6 +8,7 @@ ru:
   accept: 'Принять'
   reject: 'Отклонить'
   friends: 'Друзья'
+  friends_of_friend: 'Друзья друзей'
 
   helpers:
     submit:

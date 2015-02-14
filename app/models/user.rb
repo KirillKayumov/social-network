@@ -23,4 +23,8 @@ class User < ActiveRecord::Base
   def pending_friendships
     Friendship.pending.where(friend_id: id)
   end
+
+  def friendship_with(user)
+    friendships.accepted.find_by(friend_id: user.id)
+  end
 end
