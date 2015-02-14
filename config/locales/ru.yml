@@ -1,10 +1,19 @@
 ru:
   sign_in: 'Войти'
   sign_up: 'Зарегистрироваться'
+  sign_out: 'Выйти'
+  you_are_friends: 'Вы друзья'
+  invite_sent: 'Ваш запрос отправлен'
+  remove_friend: 'Удалить из друзей'
+  accept: 'Принять'
+  reject: 'Отклонить'
+
   helpers:
     submit:
       profile:
         update: 'Сохранить изменения'
+      friendship:
+        submit: 'Добавить в друзья'
   activerecord:
     models:
       profile: Профиль

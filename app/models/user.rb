@@ -7,6 +7,28 @@ class User < ActiveRecord::Base
          :validatable
 
   has_one :profile, dependent: :destroy
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships
 
   after_create :create_profile
+
+  def accepted_friends
+    User.joins(:friendships).where(friendships: { friend_id: id, status: 'accepted' })
+  end
+
+  def pending_friends
+    User.joins(:friendships).where(friendships: { friend_id: id, status: 'pending' })
+  end
+
+  def accepted_friend?(user)
+    accepted_friends.include?(user)
+  end
+
+  def pending_friend?(user)
+    pending_friends.include?(user)
+  end
+
+  def pending_friendships
+    Friendship.pending.where(friend_id: id)
+  end
 end

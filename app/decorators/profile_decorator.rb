@@ -1,4 +1,4 @@
 class ProfileDecorator < Draper::Decorator
   SEXES = [:male, :female]
-  STATUSES = [:pending, :completed]
+  STATUSES = ['pending', 'completed']
 end

@@ -7,4 +7,10 @@ Rails.application.routes.draw do
   }
 
   resources :profiles, only: [:show, :edit, :update]
+  resources :friendships, only: [:create, :destroy] do
+    member do
+      patch 'accept', to: 'friendships#accept', as: :accept
+      patch 'reject', to: 'friendships#reject', as: :reject
+    end
+  end
 end

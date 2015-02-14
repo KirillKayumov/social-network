@@ -1,9 +1,14 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update]
+  skip_before_action :authenticate_user!, only: [:show]
   before_action :require_permission, only: [:edit, :update]
   skip_before_action :completed_profile?, only: [:edit, :update]
 
   expose(:profile, attributes: :profile_params)
+  expose(:pending_friendships) { current_user.pending_friendships }
+  expose(:decorated_pending_friendships) { pending_friendships.decorate }
+  expose(:friendship) do
+    Friendship.find_by(user_id: current_user.id, friend_id: profile.user.id) || Nil::Friendship.new
+  end
 
   def show
   end
