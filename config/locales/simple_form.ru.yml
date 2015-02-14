@@ -17,6 +17,11 @@ ru:
         sex:
           male: 'Мужской'
           female: 'Женский'
+    placeholders:
+      user:
+        email: 'Email'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
     # Labels and hints examples
     # labels:
     #   defaults:

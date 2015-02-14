@@ -1,7 +1,15 @@
 ru:
+  navigation:
+    sign_in: 'Вход'
+    sign_up: 'Регистрация'
+    sign_out: 'Выйти'
+    menu: 'Меню'
+
+  registration: 'Регистрация'
+  session: 'Вход'
+
   sign_in: 'Войти'
   sign_up: 'Зарегистрироваться'
-  sign_out: 'Выйти'
   you_are_friends: 'Вы друзья'
   invite_sent: 'Ваш запрос отправлен'
   remove_friend: 'Удалить из друзей'
@@ -30,6 +38,19 @@ ru:
         country: 'Страна'
         city: 'Город'
         mobile: 'Мобильный телефон'
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: 'Вы ввели неверный адрес электронной почты.'
+              blank: 'Необходимо указать адрес электронной почты.'
+            password:
+              blank: 'Необходимо ввести пароль.'
+              too_short: 'Пароль должен содержать не менее %{count} знаков'
+              too_long: 'Пароль должен содержать не более %{count} знаков'
+            password_confirmation:
+              confirmation: 'Введенные пароли не соответствуют друг другу.'
   date:
     month_names:
       - Январь

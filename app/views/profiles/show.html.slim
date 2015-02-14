@@ -1,5 +1,4 @@
 = link_to Profile.model_name.human, edit_profile_path
-= link_to t('sign_out'), destroy_user_session_path
 
 - if profile != current_user.profile
   - if friendship.accepted?

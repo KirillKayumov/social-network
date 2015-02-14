@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def completed_profile?
-    if current_user && !current_user.profile.completed?
+    if user_signed_in? && current_user.profile.pending?
       redirect_to edit_profile_path(current_user.profile)
     end
   end

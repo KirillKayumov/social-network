@@ -1,5 +1,16 @@
-= simple_form_for :user, url: user_registration_path do |f|
-  = f.input :email, required: true, autofocus: true
-  = f.input :password
-  = f.input :password_confirmation
-  = f.button :submit, t('sign_up')
+.large-5.small-12.small-centered.columns
+  h3
+    = t('registration')
+  = simple_form_for resource, as: resource_name, url: user_registration_path do |f|
+    .row
+      .small-12.columns
+        = f.input :email, required: true, autofocus: true, placeholder: true, label: false
+    .row
+      .small-12.columns
+        = f.input :password, required: true, placeholder: true, label: false
+    .row
+      .small-12.columns
+        = f.input :password_confirmation, required: true, placeholder: true, label: false
+    .row
+      .small-12.columns
+        = f.button :submit, t('sign_up'), class: 'expand'

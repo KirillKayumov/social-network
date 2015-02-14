@@ -14,6 +14,10 @@ class Profile < ActiveRecord::Base
     status == 'completed'
   end
 
+  def pending?
+    status == 'pending'
+  end
+
   protected
 
   def update_status
