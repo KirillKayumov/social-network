@@ -10,6 +10,8 @@ ru:
   friends: 'Друзья'
   friends_of_friend: 'Друзья друзей'
 
+  posts: 'Записи'
+
   helpers:
     submit:
       profile:

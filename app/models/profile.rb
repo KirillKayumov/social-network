@@ -8,6 +8,8 @@ class Profile < ActiveRecord::Base
 
   before_update :update_status
 
+  delegate :posts, to: :user
+
   def completed?
     status == 'completed'
   end

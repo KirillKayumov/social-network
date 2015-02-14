@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
+  has_many :posts
 
   after_create :create_profile
 

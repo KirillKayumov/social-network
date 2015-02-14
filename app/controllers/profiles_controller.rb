@@ -9,6 +9,7 @@ class ProfilesController < ApplicationController
   expose(:friendship) do
     Friendship.find_by(user_id: current_user.id, friend_id: profile.user.id) || Nil::Friendship.new
   end
+  expose(:posts) { profile.posts }
 
   def show
   end

@@ -18,3 +18,9 @@
     = link_to t('reject'), reject_friendship_path(friendship), method: :patch
 
 = link_to t('friends'), profile_friendships_path(profile)
+
+p
+  = t('posts')
+- posts.each do |post|
+  p
+    = post.text
