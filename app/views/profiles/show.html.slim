@@ -16,3 +16,5 @@
     = friendship.user_full_name
     = link_to t(:accept), accept_friendship_path(friendship), method: :patch
     = link_to t(:reject), reject_friendship_path(friendship), method: :patch
+
+= link_to t(:friends), profile_friendships_path(profile)

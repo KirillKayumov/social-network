@@ -7,6 +7,7 @@ ru:
   remove_friend: 'Удалить из друзей'
   accept: 'Принять'
   reject: 'Отклонить'
+  friends: 'Друзья'
 
   helpers:
     submit:

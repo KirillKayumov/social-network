@@ -20,14 +20,6 @@ class User < ActiveRecord::Base
     User.joins(:friendships).where(friendships: { friend_id: id, status: 'pending' })
   end
 
-  def accepted_friend?(user)
-    accepted_friends.include?(user)
-  end
-
-  def pending_friend?(user)
-    pending_friends.include?(user)
-  end
-
   def pending_friendships
     Friendship.pending.where(friend_id: id)
   end
