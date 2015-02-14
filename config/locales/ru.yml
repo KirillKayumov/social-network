@@ -8,6 +8,9 @@ ru:
   registration: 'Регистрация'
   session: 'Вход'
 
+  messages:
+    pending_profile: 'Для продолжения необходимо заполнить анкету.'
+
   sign_in: 'Войти'
   sign_up: 'Зарегистрироваться'
   you_are_friends: 'Вы друзья'

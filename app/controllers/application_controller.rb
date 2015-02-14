@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def completed_profile?
     if user_signed_in? && current_user.profile.pending?
-      redirect_to edit_profile_path(current_user.profile)
+      redirect_to edit_profile_path(current_user.profile), alert: t('messages.pending_profile')
     end
   end
 end
