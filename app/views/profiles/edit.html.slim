@@ -1,9 +1,66 @@
-= simple_form_for profile do |f|
-  = f.input :first_name
-  = f.input :last_name
-  = f.input :sex, collection: ProfileDecorator::SEXES
-  = f.input :birthday
-  = f.input :country, as: :string
-  = f.input :city, as: :string
-  = f.input :mobile
-  = f.button :submit
+.small-7.small-centered.columns.profile-form
+  = simple_form_for try(:profile) || current_user.profile do |f|
+    .row
+      .small-5.columns
+        = f.label :first_name, class: 'right inline'
+      .small-7.columns
+        = f.input :first_name, label: false
+    .row
+      .small-5.columns
+        = f.label :last_name, class: 'right inline'
+      .small-7.columns
+        = f.input :last_name, label: false
+    .row
+      .small-5.columns
+        = f.label :sex, class: 'right inline'
+      .small-7.columns
+        = f.input :sex, collection: ProfileDecorator::SEXES, label: false
+    .row
+      .small-5.columns
+        = f.label :birthday, class: 'right inline'
+      .small-7.columns.select-date-wrapper
+        = f.input :birthday, start_year: Date.today.year - 100, label: false, wrapper: false, input_html: { class: 'select-date' }
+    .row
+      .small-5.columns
+        = f.label :country, class: 'right inline'
+      .small-7.columns
+        = f.input :country, as: :string, label: false
+    .row
+      .small-5.columns
+        = f.label :city, class: 'right inline'
+      .small-7.columns
+        = f.input :city, as: :string, label: false
+    .row
+      .small-5.columns
+        = f.label :mobile, class: 'right inline'
+      .small-7.columns
+        = f.input :mobile, label: false
+    .row
+      .small-7.small-offset-5.columns
+        = f.button :submit, class: 'expand'
+
+  hr
+  = simple_form_for current_user, url: registration_path(:user), html: { method: :patch } do |f|
+    .row
+      .small-5.columns
+        = f.label :email, class: 'right inline'
+      .small-7.columns
+        = f.input :email, label: false, placeholder: false, required: true
+    .row
+      .small-5.columns
+        = f.label :current_password, class: 'right inline'
+      .small-7.columns
+        = f.input :current_password, label: false, placeholder: false, required: true
+    .row
+      .small-5.columns
+        = f.label :password, class: 'right inline'
+      .small-7.columns
+        = f.input :password, label: false, placeholder: false, required: true
+    .row
+      .small-5.columns
+        = f.label :password_confirmation, class: 'right inline'
+      .small-7.columns
+        = f.input :password_confirmation, label: false, placeholder: false, required: true
+    .row
+      .small-7.small-offset-5.columns
+        = f.button :submit, class: 'expand'

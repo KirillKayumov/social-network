@@ -1,7 +1,13 @@
-.large-5.small-12.small-centered.columns
+.large-5.small-12.small-centered.columns.sign-up-form
   h3
     = t('registration')
   = simple_form_for resource, as: resource_name, url: user_registration_path do |f|
+    .row
+      .small-12.columns
+        = f.input :first_name, required: true, placeholder: true, label: false
+    .row
+      .small-12.columns
+        = f.input :last_name, required: true, placeholder: true, label: false
     .row
       .small-12.columns
         = f.input :email, required: true, autofocus: true, placeholder: true, label: false

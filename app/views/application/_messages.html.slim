@@ -1,4 +1,5 @@
-- flash.each do |type, content|
-  div class="alert-box #{type}" data-alert=true
-    = content
-    a.close &times;
+.small-12.columns
+  - flash.each do |type, content|
+    div class="alert-box #{type}" data-alert=true
+      = content
+      a.close &times;

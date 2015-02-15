@@ -1,0 +1,11 @@
+ul.side-nav.menu
+  li
+    = link_to t('menu.profile'), current_user
+  li
+    = link_to t('menu.friends'), '#'
+  li
+    = link_to t('menu.photos'), '#'
+  li
+    = link_to t('menu.messages'), '#'
+  li
+    = link_to t('menu.settings'), edit_user_path(current_user)

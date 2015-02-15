@@ -9,19 +9,30 @@ ru:
       default_message: "Please review the problems below:"
     labels:
       user:
-        email: 'Email'
-        password: 'Пароль'
-        password_confirmation: 'Подтверждение пароля'
+        email: 'Email:'
+        password: 'Пароль:'
+        password_confirmation: 'Подтверждение пароля:'
+        current_password: 'Текущий пароль:'
+        first_name: 'Имя:'
+        last_name: 'Фамилия:'
+        sex: 'Пол:'
+        birthday: 'День рождения:'
+        country: 'Страна:'
+        city: 'Город:'
+        mobile: 'Мобильный телефон:'
     options:
-      profile:
+      user:
         sex:
           male: 'Мужской'
           female: 'Женский'
     placeholders:
       user:
+        first_name: 'Имя'
+        last_name: 'Фамилия'
         email: 'Email'
         password: 'Пароль'
         password_confirmation: 'Подтверждение пароля'
+        current_password: 'Текущий пароль'
     # Labels and hints examples
     # labels:
     #   defaults:

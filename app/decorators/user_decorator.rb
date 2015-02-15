@@ -1,7 +1,7 @@
 class UserDecorator < Draper::Decorator
-  delegate :profile, to: :user
+  SEXES = [:male, :female]
 
   def full_name
-    "#{profile.first_name} #{profile.last_name}"
+    "#{object.first_name} #{object.last_name}"
   end
 end

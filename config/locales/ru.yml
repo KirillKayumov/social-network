@@ -10,6 +10,15 @@ ru:
 
   messages:
     pending_profile: 'Для продолжения необходимо заполнить анкету.'
+    profile_updated: 'Ваш профиль успешно обновлён.'
+    account_updated: 'Ваш аккаунт успешно обновлён.'
+
+  menu:
+    profile: 'Моя Страница'
+    friends: 'Мои Друзья'
+    photos: 'Мои Фотографии'
+    messages: 'Мои Сообщения'
+    settings: 'Мои Настройки'
 
   sign_in: 'Войти'
   sign_up: 'Зарегистрироваться'
@@ -20,18 +29,20 @@ ru:
   reject: 'Отклонить'
   friends: 'Друзья'
   friends_of_friend: 'Друзья друзей'
+  profile: 'Профиль'
+  account: 'Аккаунт'
 
   posts: 'Записи'
 
   helpers:
     submit:
       profile:
-        update: 'Сохранить изменения'
+        update: 'Обновить профиль'
       friendship:
         submit: 'Добавить в друзья'
+      user:
+        update: 'Сохранить изменения'
   activerecord:
-    models:
-      profile: Профиль
     attributes:
       profile:
         first_name: 'Имя'
@@ -45,29 +56,43 @@ ru:
       models:
         user:
           attributes:
+            first_name:
+              blank: 'Необходимо указать имя.'
+            last_name:
+              blank: 'Необходимо указать фамилию.'
             email:
               invalid: 'Вы ввели неверный адрес электронной почты.'
               blank: 'Необходимо указать адрес электронной почты.'
+              taken: 'Введённый Вами email уже зарегистрирован.'
+            current_password:
+              blank: 'Необходимо ввести пароль.'
+              invalid: 'Вы ввели неверный пароль.'
             password:
               blank: 'Необходимо ввести пароль.'
-              too_short: 'Пароль должен содержать не менее %{count} знаков'
-              too_long: 'Пароль должен содержать не более %{count} знаков'
+              too_short: 'Пароль должен содержать не менее %{count} знаков.'
+              too_long: 'Пароль должен содержать не более %{count} знаков.'
             password_confirmation:
-              confirmation: 'Введенные пароли не соответствуют друг другу.'
+              confirmation: 'Введённые пароли не соответствуют друг другу.'
+        profile:
+          attributes:
+            first_name:
+              blank: 'Необходимо указать имя.'
+            last_name:
+              blank: 'Необходимо указать фамилию.'
   date:
     month_names:
-      - Январь
-      - Февраль
-      - Март
-      - Апрель
-      - Май
-      - Июнь
-      - Июль
-      - Август
-      - Сентябрь
-      - Октябрь
-      - Ноябрь
-      - Декабрь
+      - Января
+      - Февраля
+      - Марта
+      - Апреля
+      - Мая
+      - Июня
+      - Июля
+      - Августа
+      - Сентября
+      - Октября
+      - Ноября
+      - Декабря
     order:
       - :day
       - :month

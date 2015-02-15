@@ -51,10 +51,10 @@ $body-font-family: Tahoma, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans
 // $default-float: left;
 
 // We use these as default colors throughout
-// $primary-color: #008CBA;
+$primary-color: #4d6f93;
 // $secondary-color: #e7e7e7;
-// $alert-color: #f04124;
-// $success-color: #43AC6A;
+$alert-color: #d45443;
+$success-color: #52a569;
 // $warning-color: #f08a24;
 // $info-color: #a0d3e8;
 
@@ -900,9 +900,9 @@ $body-font-family: Tahoma, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans
 // $side-nav-list-margin: rem-calc(0 0 7 0);
 
 // We use these to control link styles.
-// $side-nav-link-color: $primary-color;
+$side-nav-link-color: $primary-color;
 // $side-nav-link-color-active: scale-color($side-nav-link-color, $lightness: 30%);
-// $side-nav-link-color-hover: scale-color($side-nav-link-color, $lightness: 30%);
+$side-nav-link-color-hover: scale-color($side-nav-link-color, $lightness: 0%);
 // $side-nav-font-size: rem-calc(14);
 // $side-nav-font-weight: normal;
 // $side-nav-font-family: $body-font-family;

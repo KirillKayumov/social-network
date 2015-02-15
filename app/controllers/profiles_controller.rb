@@ -1,7 +1,6 @@
 class ProfilesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :require_permission, only: [:edit, :update]
-  skip_before_action :completed_profile?, only: [:edit, :update]
 
   expose(:profile, attributes: :profile_params)
   expose(:pending_friendships) { current_user.pending_friendships }
@@ -19,7 +18,7 @@ class ProfilesController < ApplicationController
 
   def update
     if profile.save
-      redirect_to profile_path(profile)
+      redirect_to edit_profile_path(profile), notice: t('messages.profile_updated')
     else
       render :edit
     end
@@ -40,6 +39,6 @@ class ProfilesController < ApplicationController
   end
 
   def require_permission
-    redirect_to profile_path(current_user.profile) if profile.user != current_user
+    redirect_to current_user if profile.user != current_user
   end
 end

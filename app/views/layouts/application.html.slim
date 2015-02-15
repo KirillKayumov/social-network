@@ -4,7 +4,7 @@ html class="no-js" lang="en"
 
   head
     meta charset="utf-8"
-    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
 
     title= title
 
@@ -17,10 +17,16 @@ html class="no-js" lang="en"
     = javascript_include_tag "vendor/modernizr"
 
   body
-    .row#root
+    .row.collapse#root
       = render 'application/navigation'
       = render 'application/messages'
-
-      = yield
+      - if user_signed_in?
+        .small-2.columns
+          = render 'application/menu'
+        .small-10.columns.page-body
+          = yield
+      - else
+        .small-12.columns
+          = yield
 
     = javascript_include_tag :application
