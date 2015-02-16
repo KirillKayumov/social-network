@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
          :trackable,
          :validatable
 
+  mount_uploader :avatar, AvatarUploader
+
+  delegate :url, to: :avatar, prefix: true
+
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
   has_many :posts, class_name: :Post, foreign_key: :author_id

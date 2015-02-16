@@ -24,6 +24,8 @@ gem 'rollbar', '~> 0.10.3'
 gem 'seedbank'
 gem 'thin'
 gem 'draper'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :staging, :production do
   gem 'rails_12factor'

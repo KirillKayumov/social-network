@@ -20,6 +20,7 @@ ru:
         country: 'Страна:'
         city: 'Город:'
         mobile: 'Мобильный телефон:'
+        avatar: 'Аватар:'
     options:
       user:
         sex:

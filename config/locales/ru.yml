@@ -79,6 +79,15 @@ ru:
               blank: 'Необходимо указать имя.'
             last_name:
               blank: 'Необходимо указать фамилию.'
+
+  errors:
+    messages:
+      carrierwave_processing_error: 'Не удалось изменить размеры изображение.'
+      carrierwave_integrity_error: 'Не изображение.'
+      carrierwave_download_error: 'Не удалось скачать изображение.'
+      extension_white_list_error: 'Вы можете загрузить только файлы с расширениями: %{allowed_types}'
+      extension_black_list_error: 'Вы не можете загрузить файлы с расширениями: %{prohibited_types}'
+
   date:
     month_names:
       - Января

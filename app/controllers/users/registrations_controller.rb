@@ -16,17 +16,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def configure_account_update_params
-    devise_parameter_sanitizer.for(:account_update) do |u|
-      u.permit(
-        :email,
-        :current_password,
-        :password,
-        :password_confirmation
-      )
-    end
-  end
-
   def after_sign_up_path_for(resource)
     user_path(resource)
   end
