@@ -14,3 +14,4 @@ vendor/ruby
 .env
 .pryrc
 .DS_Store
+public/uploads/*

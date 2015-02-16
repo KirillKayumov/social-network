@@ -14,4 +14,6 @@ Rails.application.routes.draw do
       patch 'reject', to: 'friendships#reject', as: :reject
     end
   end
+
+  get 'users/:user_id/friends', to: 'friendships#index', as: :user_friends
 end

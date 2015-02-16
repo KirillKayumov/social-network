@@ -9,9 +9,11 @@ ru:
   session: 'Вход'
 
   messages:
-    pending_profile: 'Для продолжения необходимо заполнить анкету.'
     profile_updated: 'Ваш профиль успешно обновлён.'
     account_updated: 'Ваш аккаунт успешно обновлён.'
+    invitation_sent: 'Заявка успешно отправлена.'
+    already_friends: 'Вы уже отправили заявку.'
+    friend_removed: 'Этот человек удалён из списка Ваших друзей.'
 
   menu:
     profile: 'Моя Страница'
@@ -28,11 +30,12 @@ ru:
   accept: 'Принять'
   reject: 'Отклонить'
   friends: 'Друзья'
-  friends_of_friend: 'Друзья друзей'
+  friends_of_friend: 'Просмотреть друзей'
+  send_message: 'Написать сообщение'
   profile: 'Профиль'
   account: 'Аккаунт'
-
   posts: 'Записи'
+  are_you_sure: 'Вы уверены?'
 
   helpers:
     submit:

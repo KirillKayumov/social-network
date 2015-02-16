@@ -11,6 +11,32 @@
   }
 }
 
+.friends-list {
+  font-size: $side-nav-font-size;
+
+  h4 {
+    border-bottom: 2px solid #DAE1E8;
+    margin: 0px;
+  }
+
+  .user-block {
+    margin-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-bottom: 1px solid #DAE1E8;
+
+    .info {
+      font-weight: bold;
+    }
+
+    .actions {
+      list-style-type: none;
+      font-size: $side-nav-font-size;
+    }
+  }
+}
+
 .select-date {
   float: left;
   width: 100%;

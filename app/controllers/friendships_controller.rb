@@ -1,17 +1,18 @@
 class FriendshipsController < ApplicationController
-  before_action :authenticate_user!
-
-  expose(:friendship)
-  expose(:profile) { Profile.find(params[:profile_id]) }
-  expose(:friends) { profile.user.accepted_friends }
+  expose(:user)
+  expose(:friendship, attributes: :friendship_params)
+  expose(:friends) { user.accepted_friends.order(first_name: :asc) }
   expose(:decorated_friends) { friends.decorate }
 
   def index
   end
 
   def create
-    friendship.update(friendship_params)
-    redirect_to profile_path(friendship.friend.profile)
+    if friendship.save
+      redirect_to friendship.friend, notice: t('messages.invitation_sent')
+    else
+      redirect_to friendship.friend, alert: t('messages.already_friends')
+    end
   end
 
   def accept
@@ -21,18 +22,18 @@ class FriendshipsController < ApplicationController
       friend_id: friendship.user_id,
       status: 'accepted'
     )
-    redirect_to profile_path(current_user.profile)
+    redirect_to current_user
   end
 
   def reject
     friendship.destroy
-    redirect_to profile_path(current_user.profile)
+    redirect_to current_user
   end
 
   def destroy
     friendship.destroy
     friendship.reversed.destroy
-    redirect_to profile_path(friendship.friend.profile)
+    redirect_to user_friends_path(current_user), notice: t('messages.friend_removed')
   end
 
   private

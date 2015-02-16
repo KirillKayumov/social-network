@@ -1,1 +1,4 @@
-
+- if user != current_user
+  = simple_form_for :friendship, url: friendships_path, method: :post do |f|
+    = f.input :friend_id, as: :hidden, input_html: { value: user.id }
+    = f.button :submit

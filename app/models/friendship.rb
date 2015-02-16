@@ -4,8 +4,9 @@ class Friendship < ActiveRecord::Base
   belongs_to :user
   belongs_to :friend, class_name: 'User', foreign_key: 'friend_id'
 
-  validates :user_id, uniqueness: { scope: :friend_id }
+  validates :user_id, presence: true, uniqueness: { scope: :friend_id }
   validates :status, inclusion: { in: STATUSES }
+  validates :friend_id, presence: true
 
   scope :pending, -> { where(status: 'pending') }
   scope :accepted, -> { where(status: 'accepted') }

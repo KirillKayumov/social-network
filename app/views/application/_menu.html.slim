@@ -2,7 +2,7 @@ ul.side-nav.menu
   li
     = link_to t('menu.profile'), current_user
   li
-    = link_to t('menu.friends'), '#'
+    = link_to t('menu.friends'), user_friends_path(current_user)
   li
     = link_to t('menu.photos'), '#'
   li

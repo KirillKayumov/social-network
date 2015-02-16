@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   expose(:user)
   expose(:decorated_user) { user.decorate }
+  expose(:pending_friendships) { current_user.pending_friendships }
 
   def update
     if update_user
