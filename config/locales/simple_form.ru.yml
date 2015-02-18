@@ -20,7 +20,9 @@ ru:
         country: 'Страна:'
         city: 'Город:'
         mobile: 'Мобильный телефон:'
-        avatar: 'Аватар:'
+        avatar: 'Фотография:'
+        remove_avatar: 'Удалить фотографию'
+        work_place: 'Место работы:'
     options:
       user:
         sex:

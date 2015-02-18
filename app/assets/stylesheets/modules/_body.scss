@@ -1,3 +1,115 @@
+.alert-block {
+  margin-bottom: 0px;
+}
+
+.profile-block {
+  .narrow-column {
+    padding-left: 0px;
+  }
+
+  .wide-column {
+    margin-top: 10px;
+    padding-left: 0px;
+
+    .profile-info {
+      .user-name {
+        color: $primary-color;
+        font-weight: bold;
+        border-bottom: 1px solid #DAE1E8;
+      }
+
+      .profile-details {
+        padding-top: 10px;
+        padding-left: 0px;
+        padding-right: 0px;
+
+        .attr {
+          color: #777;
+        }
+      }
+
+      .wall {
+        margin-top: 10px;
+        padding: 0px;
+
+        .wall-header {
+          background-color: #F7F7F7;
+          color: $primary-color;
+          font-weight: bold;
+          padding-top: 2px;
+          padding-bottom: 2px;
+          padding-left: 5px;
+          padding-right: 5px;
+
+          .button {
+            margin-top: -5px;
+            font-size: $base-font-size;
+            margin-bottom: 5px;
+          }
+        }
+
+        .wall-body {
+          .post {
+            margin-top: 10px;
+            padding: 0px;
+            border-bottom: 1px solid #DAE1E8;
+
+            .avatar {
+              img {
+                display: block;
+                margin: auto;
+              }
+            }
+
+            .content {
+              p {
+                word-wrap: break-word;
+                margin-bottom: 5px;
+              }
+
+              .author-name {
+                color: $primary-color;
+                font-weight: bold;
+              }
+
+              .like {
+                font-size: 25px;
+                color: #c9d8e6;
+              }
+
+              .like-pressed {
+                font-size: 25px;
+                color: $primary-color !important;
+              }
+
+              .like:hover {
+                color: $primary-color;
+              }
+
+              .date {
+                margin-top: 15px;
+              }
+
+              .remove-post-wrap {
+                font-weight: bold;
+              }
+
+              .like-block {
+                #likes-number {
+                  color: $primary-color;
+                  font-weight: bold;
+                  margin-top: 12px;
+                  margin-left: 5px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 .page-body {
   border: 2px solid #DAE1E8;
 }
@@ -12,11 +124,11 @@
 }
 
 .friends-list {
-  font-size: $side-nav-font-size;
-
-  h4 {
+  .friends-count {
+    color: $primary-color;
+    font-weight: bold;
     border-bottom: 2px solid #DAE1E8;
-    margin: 0px;
+    margin-top: 5px;
   }
 
   .user-block {
@@ -32,7 +144,23 @@
 
     .actions {
       list-style-type: none;
-      font-size: $side-nav-font-size;
+
+      li {
+        padding-left: 5px;
+      }
+
+      li:hover {
+        background-color: #F7F7F7;
+      }
+    }
+
+    .avatar {
+      padding: 0px;
+
+      img {
+        display: block;
+        margin: auto;
+      }
     }
   }
 }

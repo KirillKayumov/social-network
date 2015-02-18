@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :friends, through: :friendships
   has_many :posts, class_name: :Post, foreign_key: :author_id
   has_many :wall_posts, class_name: :Post, foreign_key: :owner_id
+  has_many :likes
 
   with_options presence: true do |user|
     user.validates :first_name

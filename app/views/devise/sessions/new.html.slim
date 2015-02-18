@@ -4,10 +4,10 @@
   = simple_form_for resource, as: resource_name, url: user_session_path do |f|
     .row
       .small-12.columns
-        = f.input :email, required: true, autofocus: true, placeholder: true, label: false
+        = f.input :email, autofocus: true, placeholder: true, label: false
     .row
       .small-12.columns
-        = f.input :password, required: true, placeholder: true, label: false
+        = f.input :password, placeholder: true, label: false
     .row
       .small-12.columns
         = f.button :submit, t('sign_in'), class: 'expand'

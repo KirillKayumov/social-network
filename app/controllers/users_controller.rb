@@ -4,6 +4,13 @@ class UsersController < ApplicationController
   expose(:user)
   expose(:decorated_user) { user.decorate }
   expose(:pending_friendships) { current_user.pending_friendships }
+  expose(:posts) do
+    user
+    .wall_posts
+    .order(created_at: :desc)
+    .includes(:author)
+  end
+  expose(:decorated_posts) { posts.decorate }
 
   def update
     if update_user
@@ -40,6 +47,7 @@ class UsersController < ApplicationController
       :birthday,
       :country,
       :city,
+      :work_place,
       :mobile,
       :email,
       :current_password,

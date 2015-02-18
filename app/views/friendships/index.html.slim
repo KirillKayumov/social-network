@@ -1,25 +1,29 @@
 .friends-list
-  .small-12.columns.small-centered
-    h4
-      small
-        = "#{t('friends')}: #{friends.size}"
+  .small-12.columns
+    .friends-count
+      span
+        = "#{t('friends')}: "
+      span#friends-number
+        = friends.size
     - decorated_friends.each do |friend|
       .user-block.columns
         .small-2.avatar.columns
-          = image_tag(friend.avatar_url(:friends_list))
+          a href=user_path(friend.object)
+            = image_tag(friend.avatar_url(:friends_list))
         .small-6.columns.info
           = link_to friend.full_name, user_path(friend)
         .small-4.columns
-          ul.actions
-            li
-              = link_to t('send_message'), '#'
-            li
-              = link_to t('friends_of_friend'), user_friends_path(friend.object)
-            - if user == current_user
+          .small-11.columns
+            ul.actions
               li
-                = link_to( \
-                  t('remove_friend'), \
-                  friendship_path(current_user.friendship_with(friend.object)), \
-                  method: :delete,
-                  data: { confirm: t('are_you_sure') } \
-                )
+                = link_to t('send_message'), '#'
+              li
+                = link_to t('friends_of_friend'), user_friends_path(friend.object)
+              - if user == current_user
+                li
+                  = link_to( \
+                    t('remove_friend'), \
+                    friendship_path(current_user.friendship_with(friend.object)), \
+                    method: :delete,
+                    class: 'remove-friend' \
+                  )

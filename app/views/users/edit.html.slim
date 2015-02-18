@@ -11,6 +11,8 @@
         .small-7.columns
           = image_tag(decorated_user.avatar_url(:settings))
           = f.input :avatar, as: :file, label: false
+          = f.check_box :remove_avatar
+          = f.label :remove_avatar
       .row
         .small-5.columns
           = f.label :first_name, class: 'right inline'
@@ -41,6 +43,11 @@
           = f.label :city, class: 'right inline'
         .small-7.columns
           = f.input :city, as: :string, label: false, placeholder: false
+      .row
+        .small-5.columns
+          = f.label :work_place, class: 'right inline'
+        .small-7.columns
+          = f.input :work_place, as: :string, label: false, placeholder: false
       .row
         .small-5.columns
           = f.label :mobile, class: 'right inline'

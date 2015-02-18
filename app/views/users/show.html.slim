@@ -1,4 +1,78 @@
-- if user != current_user
-  = simple_form_for :friendship, url: friendships_path, method: :post do |f|
-    = f.input :friend_id, as: :hidden, input_html: { value: user.id }
-    = f.button :submit
+.profile-block
+  .small-4.columns.narrow-column
+    = image_tag(decorated_user.avatar_url)
+  .small-8.columns.wide-column
+    .profile-info
+      .user-name
+        = decorated_user.full_name
+      .profile-details.columns
+        .small-4.columns.attr
+          = User.human_attribute_name(:sex)
+        .small-8.columns
+          = decorated_user.sex
+        .small-4.columns.attr
+          = User.human_attribute_name(:birthday)
+        .small-8.columns
+          = decorated_user.birthday
+        .small-4.columns.attr
+          = User.human_attribute_name(:country)
+        .small-8.columns
+          = decorated_user.country
+        .small-4.columns.attr
+          = User.human_attribute_name(:city)
+        .small-8.columns
+          = decorated_user.city
+        .small-4.columns.attr
+          = User.human_attribute_name(:work_place)
+        .small-8.columns
+          = decorated_user.work_place
+        .small-4.columns.attr
+          = User.human_attribute_name(:mobile)
+        .small-8.columns
+          = decorated_user.mobile
+
+      .wall.columns
+        .wall-header
+          span
+            = "#{t('posts')}: "
+          span#posts-number
+            = posts.size
+          = simple_form_for :post, url: posts_path, method: :post do |f|
+            = f.input :owner_id, as: :hidden, input_html: { value: user.id }
+            = f.input :text, as: :text, placeholder: t('new_post'), label: false, input_html: { rows: 3 }
+            = f.button :submit, class: 'tiny'
+        .wall-body
+          - decorated_posts.each do |post|
+            .post.columns id==post.object.id
+              .small-2.columns.avatar
+                a href==user_path(post.object.author)
+                  = image_tag(post.avatar_url(:wall))
+              .small-10.columns.content
+                span.author-name
+                  = link_to post.full_name, user_path(post.object.author)
+                - if user == current_user || post.object.author == current_user
+                  span.right.remove-post-wrap
+                    = link_to( \
+                      '&times;'.html_safe, \
+                      post_path(post.object), \
+                      class: 'remove-post' \
+                    )
+                p
+                  = post.text
+                p
+                  small.left.date
+                    = post.created_at
+                  .like-block
+                    span.right#likes-number
+                      = post.object.likes_count
+                    - if post.object.like_of(current_user)
+                      a.right.like.like-pressed href=post_create_like_path(post.object) data-method='delete'
+                        i.fi-like
+                    - else
+                      a.right.like href==post_destroy_like_path(post.object) data-method='post'
+                        i.fi-like
+
+/ - if user != current_user
+/   = simple_form_for :friendship, url: friendships_path, method: :post do |f|
+/     = f.input :friend_id, as: :hidden, input_html: { value: user.id }
+/     = f.button :submit

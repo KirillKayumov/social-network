@@ -33,7 +33,10 @@ class FriendshipsController < ApplicationController
   def destroy
     friendship.destroy
     friendship.reversed.destroy
-    redirect_to user_friends_path(current_user), notice: t('messages.friend_removed')
+
+    respond_to do |format|
+      format.json { render json: { status: :ok } }
+    end
   end
 
   private

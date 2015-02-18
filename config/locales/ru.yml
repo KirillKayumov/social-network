@@ -8,6 +8,9 @@ ru:
   registration: 'Регистрация'
   session: 'Вход'
 
+  male: 'Мужской'
+  female: 'Женский'
+
   messages:
     profile_updated: 'Ваш профиль успешно обновлён.'
     account_updated: 'Ваш аккаунт успешно обновлён.'
@@ -26,7 +29,7 @@ ru:
   sign_up: 'Зарегистрироваться'
   you_are_friends: 'Вы друзья'
   invite_sent: 'Ваш запрос отправлен'
-  remove_friend: 'Удалить из друзей'
+  remove_friend: 'Убрать из друзей'
   accept: 'Принять'
   reject: 'Отклонить'
   friends: 'Друзья'
@@ -36,6 +39,8 @@ ru:
   account: 'Аккаунт'
   posts: 'Записи'
   are_you_sure: 'Вы уверены?'
+  not_specified: 'Не указано'
+  new_post: 'Что у Вас нового?'
 
   helpers:
     submit:
@@ -45,9 +50,11 @@ ru:
         submit: 'Добавить в друзья'
       user:
         update: 'Сохранить изменения'
+      post:
+        submit: 'Отправить'
   activerecord:
     attributes:
-      profile:
+      user:
         first_name: 'Имя'
         last_name: 'Фамилия'
         sex: 'Пол'
@@ -55,6 +62,7 @@ ru:
         country: 'Страна'
         city: 'Город'
         mobile: 'Мобильный телефон'
+        work_place: 'Место работы'
     errors:
       models:
         user:
@@ -76,12 +84,6 @@ ru:
               too_long: 'Пароль должен содержать не более %{count} знаков.'
             password_confirmation:
               confirmation: 'Введённые пароли не соответствуют друг другу.'
-        profile:
-          attributes:
-            first_name:
-              blank: 'Необходимо указать имя.'
-            last_name:
-              blank: 'Необходимо указать фамилию.'
 
   errors:
     messages:
@@ -91,8 +93,28 @@ ru:
       extension_white_list_error: 'Вы можете загрузить только файлы с расширениями: %{allowed_types}'
       extension_black_list_error: 'Вы не можете загрузить файлы с расширениями: %{prohibited_types}'
 
+  time:
+    formats:
+      default: '%-d %b %Y %H:%M'
   date:
+    formats:
+      default: '%-d %B %Y'
+    abbr_month_names:
+      -
+      - янв
+      - фев
+      - мар
+      - апр
+      - мая
+      - июн
+      - июл
+      - авг
+      - сен
+      - окт
+      - ноя
+      - дек
     month_names:
+      -
       - Января
       - Февраля
       - Марта
