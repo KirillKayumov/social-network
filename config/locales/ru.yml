@@ -17,6 +17,8 @@ ru:
     invitation_sent: 'Заявка успешно отправлена.'
     already_friends: 'Вы уже отправили заявку.'
     friend_removed: 'Этот человек удалён из списка Ваших друзей.'
+    accept_friend: 'Этот человек добавлен в список Ваших друзей.'
+    reject_friend: 'Этот человек не был добавлен в список Ваших друзей.'
 
   menu:
     profile: 'Моя Страница'
@@ -33,6 +35,9 @@ ru:
   accept: 'Принять'
   reject: 'Отклонить'
   friends: 'Друзья'
+  all_friends: 'Все друзья'
+  pending_friends: 'Заявки в друзья'
+  find_friends: 'Поиск друзей'
   friends_of_friend: 'Просмотреть друзей'
   send_message: 'Написать сообщение'
   profile: 'Профиль'

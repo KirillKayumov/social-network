@@ -1,29 +1,71 @@
 .friends-list
   .small-12.columns
-    .friends-count
-      span
-        = "#{t('friends')}: "
-      span#friends-number
-        = friends.size
-    - decorated_friends.each do |friend|
-      .user-block.columns
-        .small-2.avatar.columns
-          a href=user_path(friend.object)
-            = image_tag(friend.avatar_url(:friends_list))
-        .small-6.columns.info
-          = link_to friend.full_name, user_path(friend)
-        .small-4.columns
-          .small-11.columns
-            ul.actions
-              li
-                = link_to t('send_message'), '#'
-              li
-                = link_to t('friends_of_friend'), user_friends_path(friend.object)
-              - if user == current_user
+    dl.sub-nav.friends-panel
+      dd.active
+        a#all-friends
+          = t('all_friends')
+      - if user == current_user
+        dd
+          a#pending-friends
+            = "#{t('pending_friends')} (#{pending_friendships.size})"
+        dd
+          a#find-friends
+            = t('find_friends')
+    .all-friends
+      .friends-count
+        span
+          = "#{t('friends')}: "
+        span#friends-number
+          = friends.size
+      - decorated_friends.each do |friend|
+        .user-block.columns
+          .small-2.avatar.columns
+            a href=user_path(friend.object)
+              = image_tag(friend.avatar_url(:friends_list))
+          .small-6.columns.info
+            = link_to friend.full_name, user_path(friend)
+          .small-4.columns
+            .small-11.columns
+              ul.actions
                 li
-                  = link_to( \
-                    t('remove_friend'), \
-                    friendship_path(current_user.friendship_with(friend.object)), \
-                    method: :delete,
-                    class: 'remove-friend' \
-                  )
+                  = link_to t('send_message'), '#'
+                li
+                  = link_to t('friends_of_friend'), user_friends_path(friend.object)
+                - if user == current_user
+                  li
+                    = link_to( \
+                      t('remove_friend'), \
+                      friendship_path(current_user.friendship_with(friend.object)), \
+                      method: :delete,
+                      class: 'remove-friend' \
+                    )
+
+    .pending-friends
+      - pending_friendships.each do |friendship|
+        .user-block.columns
+          .small-2.avatar.columns
+            a href=user_path(friendship.user)
+              = image_tag(friendship.user.avatar_url(:friends_list))
+          .small-6.columns.info
+            = link_to friendship.user.decorate.full_name, user_path(friendship.user)
+          .small-4.columns
+            .small-11.columns
+              ul.actions
+                li
+                  = link_to t('accept'), accept_friendship_path(friendship), method: 'patch'
+                li
+                  = link_to t('reject'), reject_friendship_path(friendship), method: 'delete'
+
+    .find-friends
+      - people.each do |human|
+        .user-block.columns
+          .small-2.avatar.columns
+            a href=user_path(human)
+              = image_tag(human.avatar_url(:friends_list))
+          .small-6.columns.info
+            = link_to human.decorate.full_name, user_path(human)
+          .small-4.columns
+            .small-11.columns
+              = simple_form_for :friendship, url: friendships_path, method: :post do |f|
+                = f.input :friend_id, as: :hidden, input_html: { value: human.id }
+                = f.button :submit, class: 'small'

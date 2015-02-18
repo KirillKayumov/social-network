@@ -2,7 +2,10 @@ ul.side-nav.menu
   li
     = link_to t('menu.profile'), current_user
   li
-    = link_to t('menu.friends'), user_friends_path(current_user)
+    - if friend_invitations_number > 0
+      = link_to "#{t('menu.friends')} (#{friend_invitations_number})", user_friends_path(current_user)
+    - else
+      = link_to t('menu.friends'), user_friends_path(current_user)
   li
     = link_to t('menu.photos'), '#'
   li

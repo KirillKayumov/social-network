@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :friendships, only: %i(create destroy) do
     member do
       patch 'accept', to: 'friendships#accept', as: :accept
-      patch 'reject', to: 'friendships#reject', as: :reject
+      delete 'reject', to: 'friendships#reject', as: :reject
     end
   end
 

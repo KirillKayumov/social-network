@@ -124,6 +124,15 @@
 }
 
 .friends-list {
+  .friends-panel {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .pending-friends, .find-friends {
+    display: none;
+  }
+
   .friends-count {
     color: $primary-color;
     font-weight: bold;
