@@ -1,5 +1,5 @@
 class UserDecorator < Draper::Decorator
-  SEXES = [:male, :female]
+  SEXES = %i(male female)
 
   delegate :first_name,
            :last_name

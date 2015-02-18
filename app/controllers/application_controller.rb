@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!
 
-  protected
-
   decent_configuration do
     strategy DecentExposure::StrongParametersStrategy
   end

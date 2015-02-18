@@ -6,9 +6,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: %i(show edit update)
 
-  resources :friendships, only: [:create, :destroy] do
+  resources :friendships, only: %i(create destroy) do
     member do
       patch 'accept', to: 'friendships#accept', as: :accept
       patch 'reject', to: 'friendships#reject', as: :reject
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   get 'users/:user_id/friends', to: 'friendships#index', as: :user_friends
 
-  resources :posts, only: [:create, :destroy] do
+  resources :posts, only: %i(create destroy) do
     post 'like', to: 'likes#create', as: :create_like
     delete 'like', to: 'likes#destroy', as: :destroy_like
   end

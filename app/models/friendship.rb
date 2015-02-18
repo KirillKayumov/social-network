@@ -1,5 +1,5 @@
 class Friendship < ActiveRecord::Base
-  STATUSES = ['pending', 'accepted']
+  STATUSES = %w(pending accepted)
 
   belongs_to :user
   belongs_to :friend, class_name: 'User', foreign_key: 'friend_id'
