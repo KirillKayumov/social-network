@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   belongs_to :author, class_name: :User
   belongs_to :owner, class_name: :User
 
-  has_many :likes, as: :likable
+  has_many :likes, as: :likable, dependent: :destroy
 
   validates :text, :owner_id, :author_id, presence: true
 
