@@ -20,8 +20,10 @@
       - decorated_friends.each do |friend|
         .user-block.columns
           .small-2.avatar.columns
-            a href=user_path(friend.object)
-              = image_tag(friend.avatar_url(:friends_list))
+            ul.clearing-thumbs data-clearing=true
+              li
+                a href=friend.avatar_url
+                  = image_tag(friend.avatar_url(:friends_list))
           .small-6.columns.info
             = link_to friend.full_name, user_path(friend)
           .small-4.columns
@@ -60,8 +62,10 @@
       - people.each do |human|
         .user-block.columns
           .small-2.avatar.columns
-            a href=user_path(human)
-              = image_tag(human.avatar_url(:friends_list))
+            ul.clearing-thumbs data-clearing=true
+              li
+                a href=human.avatar_url
+                  = image_tag(human.avatar_url(:friends_list))
           .small-6.columns.info
             = link_to human.decorate.full_name, user_path(human)
           .small-4.columns

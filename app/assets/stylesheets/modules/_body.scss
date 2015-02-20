@@ -1,10 +1,46 @@
+.photos-count {
+  color: $primary-color;
+  font-weight: bold;
+  border-bottom: 2px solid #DAE1E8;
+  margin-top: 5px;
+}
+
+#photo-uploader-input {
+  position: absolute;
+}
+
+.photos-block {
+  margin-top: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+
+  .photo {
+    position: relative;
+    float: left;
+
+    a, img {
+      display: block;
+      margin: auto;
+      position: relative;
+    }
+
+    .delete-photo {
+      position: absolute;
+    }
+  }
+}
+
 .alert-block {
   margin-bottom: 0px;
 }
 
 .profile-block {
+  .avatar-block {
+  }
+
   .narrow-column {
     padding-left: 0px;
+    padding-right: 5px;
   }
 
   .wide-column {

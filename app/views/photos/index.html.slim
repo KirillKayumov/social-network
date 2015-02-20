@@ -1,0 +1,21 @@
+- if user == current_user
+  = simple_form_for :photo do |f|
+    = f.input :image, as: :file, label: false, input_html: { id: 'photo-uploader-input' }
+    = f.button :submit, class: 'expand', id: 'photo-uploader-submit'
+
+.small-12.columns
+  .photos-count
+    span
+      = "#{t('photos')}: "
+    span#photos-number
+      = photos.size
+
+  ul.clearing-thumbs.small-block-grid-5.photos-block data-clearing=true
+    - photos.each do |photo|
+      li.photo
+        a.th href=photo.image.url
+          - if user == current_user
+            = image_tag photo.image.url(:thumb), data: { caption: "<a data-method='delete' href=#{user_photo_path(user, photo)}>#{t('remove')}</a>" }
+          - else
+            = image_tag photo.image.url(:thumb)
+

@@ -7,7 +7,7 @@ ul.side-nav.menu
     - else
       = link_to t('menu.friends'), user_friends_path(current_user)
   li
-    = link_to t('menu.photos'), '#'
+    = link_to t('menu.photos'), user_photos_path(current_user)
   li
     = link_to t('menu.messages'), '#'
   li

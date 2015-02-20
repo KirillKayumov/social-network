@@ -1,6 +1,9 @@
 .profile-block
   .small-4.columns.narrow-column
-    = image_tag(decorated_user.avatar_url)
+    ul.clearing-thumbs.avatar-block data-clearing=true
+      li
+        a href=decorated_user.avatar_url
+          = image_tag(decorated_user.avatar_url(:profile))
   .small-8.columns.wide-column
     .profile-info
       .user-name
