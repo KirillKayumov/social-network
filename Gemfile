@@ -25,6 +25,7 @@ gem 'seedbank'
 gem 'thin'
 gem 'draper'
 gem 'carrierwave'
+gem 'fog'
 gem 'mini_magick'
 
 group :staging, :production do
