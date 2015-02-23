@@ -23,6 +23,9 @@ ru:
         avatar: 'Фотография:'
         remove_avatar: 'Удалить фотографию'
         work_place: 'Место работы:'
+      message:
+        receiver_id: 'Получатель'
+        text: 'Сообщение'
     options:
       user:
         sex:

@@ -1,0 +1,49 @@
+.row
+  .small-8.columns
+    dl.sub-nav.messages-panel
+      dd.active
+        a#received-messages-link
+          = t('received_messages')
+      dd
+        a#sent-messages-link
+          = t('sent_messages')
+  .small-4.columns
+    = link_to t('new_message'), new_message_path, class: 'button tiny right'
+
+
+.row#inbox
+  #received-messages-block
+    small-12.columns.messages-count
+      span
+        = "#{t('messages_count')}: "
+      span#messages-number
+        = received_messages.size
+
+    .small-12.columns.messages
+      - received_messages.each do |message|
+        a href=message_path(message)
+          .message-block.columns class="#{'unread-message' if message.status == 'sent'}"
+            .small-1.columns
+              = image_tag(message.sender.decorate.avatar_url(:wall))
+            .small-3.columns
+              = message.sender.decorate.full_name
+            .small-8.columns.message-body
+              = message.text
+
+  #sent-messages-block
+    small-12.columns.messages-count
+      span
+        = "#{t('messages_count')}: "
+      span#messages-number
+        = sent_messages.size
+
+    .small-12.columns.messages
+      - sent_messages.each do |message|
+        a href=message_path(message)
+          .message-block.columns
+            .small-1.columns
+              = image_tag(message.receiver.decorate.avatar_url(:wall))
+            .small-3.columns
+              = message.receiver.decorate.full_name
+            .small-8.columns.message-body
+              = message.text

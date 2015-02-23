@@ -41,7 +41,6 @@ ru:
   pending_friends: 'Заявки в друзья'
   find_friends: 'Поиск друзей'
   friends_of_friend: 'Просмотреть друзей'
-  send_message: 'Написать сообщение'
   profile: 'Профиль'
   account: 'Аккаунт'
   posts: 'Записи'
@@ -50,6 +49,14 @@ ru:
   new_post: 'Что у Вас нового?'
   remove: 'Удалить'
   photos: 'Фотографии'
+  messages_count: 'Сообщения'
+  received_messages: 'Входящие'
+  sent_messages: 'Отправленные'
+  new_message: 'Написать сообщение'
+  sender: 'Отправитель'
+  message: 'Сообщение'
+  receiver: 'Получатель'
+  reply: 'Ответить'
 
   helpers:
     submit:
@@ -63,6 +70,8 @@ ru:
         submit: 'Отправить'
       photo:
         submit: 'Добавить новые фотографии'
+      message:
+        create: 'Отправить'
   activerecord:
     attributes:
       user:

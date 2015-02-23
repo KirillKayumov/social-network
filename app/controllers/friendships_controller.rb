@@ -20,7 +20,7 @@ class FriendshipsController < ApplicationController
   def create
     friendship = Friendship.new(friendship_params)
     if friendship.save
-      redirect_to user_friends_path(current_user), notice: t('messages.invitation_sent')
+      redirect_to friendship.friend, notice: t('messages.invitation_sent')
     else
       redirect_to friendship.friend, alert: t('messages.already_friends')
     end
@@ -49,6 +49,7 @@ class FriendshipsController < ApplicationController
 
     respond_to do |format|
       format.json { render json: { status: :ok } }
+      format.html { redirect_to user_path(friendship.friend) }
     end
   end
 

@@ -1,0 +1,10 @@
+.row.new-message
+  .small-8.small-offset-2
+    = simple_form_for message do |f|
+      - if params[:receiver_id]
+        = f.input :receiver_id, as: :hidden, input_html: { value: params[:receiver_id] }
+        = f.input :receiver_id, as: :string, disabled: true, input_html: { value: User.find(params[:receiver_id]).decorate.full_name }
+      - else
+        = f.input :receiver_id, collection: friends.map { |f| [f.decorate.full_name, f.id] }
+      = f.input :text, input_html: { rows: 10 }
+      = f.button :submit, class: 'small'

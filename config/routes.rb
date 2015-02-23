@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :photos, only: %i(create index destroy)
   end
 
+  resources :messages, only: %i(index show new create destroy)
+
   resources :friendships, only: %i(create destroy) do
     member do
       patch 'accept', to: 'friendships#accept', as: :accept

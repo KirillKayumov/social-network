@@ -1,3 +1,44 @@
+#sent-messages-block {
+  display: none;
+}
+
+.messages-count {
+  color: $primary-color;
+  font-weight: bold;
+  border-bottom: 2px solid #DAE1E8;
+}
+
+.messages {
+  padding-left: 0px;
+  padding-right: 0px;
+
+  .message-block {
+    border-bottom: 1px solid #DAE1E8;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+
+    &:hover {
+      background-color: rgb(237, 241, 245);
+    }
+  }
+
+  .unread-message {
+    background-color: rgb(237, 241, 245);
+  }
+
+  .message-body {
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+.new-message {
+  background-color: #F7F7F7;
+}
+
 .photos-count {
   color: $primary-color;
   font-weight: bold;
@@ -36,11 +77,23 @@
 
 .profile-block {
   .avatar-block {
+    li {
+      margin-right: 0px;
+    }
   }
 
   .narrow-column {
     padding-left: 0px;
     padding-right: 5px;
+
+    .actions {
+      margin-top: 10px;
+    }
+
+    img {
+      display: block;
+      margin: auto;
+    }
   }
 
   .wide-column {

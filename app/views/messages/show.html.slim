@@ -1,0 +1,17 @@
+.row.new-message
+  .small-8.small-offset-2
+    - if message.sender == current_user
+      = label_tag :receiver, t('receiver')
+      = text_field_tag :receiver, message.receiver.decorate.full_name
+    - else
+      = label_tag :sender, t('sender')
+      = text_field_tag :sender, message.sender.decorate.full_name
+    = label_tag :message, t('message')
+    = text_area_tag :message, message.text, rows: 10
+
+    ul.button-group
+      - if message.receiver == current_user
+        li
+          = link_to t('reply'), new_message_path(receiver_id: message.sender.id), class: 'button small'
+      li
+        = link_to t('remove'), message_path(message), method: :delete, class: 'button small'

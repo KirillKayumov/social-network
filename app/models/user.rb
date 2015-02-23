@@ -16,10 +16,16 @@ class User < ActiveRecord::Base
   has_many :wall_posts, class_name: :Post, foreign_key: :owner_id, dependent: :destroy
   has_many :likes
   has_many :photos, dependent: :destroy
+  has_many :received_messages, class_name: 'Message', foreign_key: 'receiver_id'
+  has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id'
 
   with_options presence: true do |user|
     user.validates :first_name
     user.validates :last_name
+  end
+
+  def unread_messages
+    received_messages.sent
   end
 
   def accepted_friends
@@ -35,6 +41,6 @@ class User < ActiveRecord::Base
   end
 
   def friendship_with(user)
-    friendships.accepted.find_by(friend_id: user.id)
+    friendships.find_by(friend_id: user.id)
   end
 end
