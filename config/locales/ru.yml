@@ -108,6 +108,12 @@ ru:
               confirmation: 'Введённые пароли не соответствуют друг другу.'
             mobile:
               invalid: 'Вы ввели неверный номер мобильного телефона.'
+        message:
+          attributes:
+            receiver_id:
+              blank: 'Необходимо указать получателя.'
+            text:
+              blank: 'Необходимо ввести текст сообщения.'
 
   errors:
     messages:

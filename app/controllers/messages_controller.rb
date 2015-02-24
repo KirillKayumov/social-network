@@ -15,7 +15,11 @@ class MessagesController < ApplicationController
   end
 
   def create
-    redirect_to messages_path if message.save
+    if message.save
+      redirect_to messages_path
+    else
+      render :new
+    end
   end
 
   def destroy
