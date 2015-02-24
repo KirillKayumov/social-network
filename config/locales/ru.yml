@@ -106,6 +106,8 @@ ru:
               too_long: 'Пароль должен содержать не более %{count} знаков.'
             password_confirmation:
               confirmation: 'Введённые пароли не соответствуют друг другу.'
+            mobile:
+              invalid: 'Вы ввели неверный номер мобильного телефона.'
 
   errors:
     messages:
