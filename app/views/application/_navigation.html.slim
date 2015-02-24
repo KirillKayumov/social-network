@@ -5,11 +5,15 @@
       li.toggle-topbar.menu-icon
         = link_to t('navigation.menu'), '#'
     section.top-bar-section
-      ul.right
-        - if user_signed_in?
+      - if user_signed_in?
+        ul.right
           li
             = link_to t('navigation.sign_out'), destroy_user_session_path
-        - else
+      - else
+        ul.left
+          li
+            = link_to t('index'), root_path
+        ul.right
           li
             = link_to t('navigation.sign_in'), new_user_session_path
           li

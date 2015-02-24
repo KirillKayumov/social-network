@@ -29,6 +29,7 @@ ru:
     messages: 'Мои Сообщения'
     settings: 'Мои Настройки'
 
+  index: 'Главная'
   sign_in: 'Войти'
   sign_up: 'Зарегистрироваться'
   you_are_friends: 'Вы друзья'
