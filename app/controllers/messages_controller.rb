@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :require_permission, only: %i(show create destroy)
+
   expose(:message, attributes: :message_params)
   expose(:friends) { current_user.friends }
   expose(:received_messages) { current_user.received_messages.ordered.includes(:sender) }
@@ -28,6 +30,10 @@ class MessagesController < ApplicationController
   end
 
   private
+
+  def require_permission
+    redirect_to current_user if message.sender != current_user && message.receiver != current_user
+  end
 
   def message_params
     params.require(:message).permit(

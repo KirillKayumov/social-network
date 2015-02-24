@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   protected
 
   def require_permission
-    redirect_to post.owner if post.author != current_user
+    redirect_to post.owner if post.owner != current_user && post.author != current_user
   end
 
   private

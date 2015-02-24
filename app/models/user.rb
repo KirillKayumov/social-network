@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id'
 
   validates :first_name, :last_name, presence: true
-  validates :mobile, format: { with: /\A(\+\d{1,3}[- ]?)?\d{10}\z/ }, allow_nil: true
+  validates :mobile, format: { with: /\A((\+\d{1,3}[- ]?)|8)?\d{10}\z/ }, allow_nil: true
 
   def unread_messages
     received_messages.sent
