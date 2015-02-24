@@ -2,6 +2,13 @@
   = simple_form_for :photo do |f|
     = f.input :image, as: :file, label: false, input_html: { id: 'photo-uploader-input' }
     = f.button :submit, class: 'expand', id: 'photo-uploader-submit'
+  a#upload-message-link data-reveal-id='upload-message'
+
+  div.reveal-modal#upload-message data-reveal=true
+    h4
+      = t('messages.photo_uploading')
+    a.close-reveal-modal
+      | &#215;
 
 .small-12.columns
   .photos-count
@@ -18,4 +25,3 @@
             = image_tag photo.image.url(:thumb), data: { caption: "<a data-method='delete' href=#{user_photo_path(user, photo)}>#{t('remove')}</a>" }
           - else
             = image_tag photo.image.url(:thumb)
-

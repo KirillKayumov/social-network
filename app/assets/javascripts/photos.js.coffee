@@ -5,4 +5,5 @@ $ ->
 
   $('#photo-uploader-input').on 'change', (event) ->
     $(this).parents('form').submit()
+    $('#upload-message-link').click()
 
