@@ -27,6 +27,7 @@ gem 'draper'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
+gem 'faker'
 
 group :staging, :production do
   gem 'rails_12factor'
