@@ -19,35 +19,17 @@
           = simple_form_for :friendship, url: friendships_path, method: :post do |f|
             = f.input :friend_id, as: :hidden, input_html: { value: user.id }
             = f.button :submit, class: 'small expand'
+
   .small-8.columns.wide-column
     .profile-info
       .user-name
         = decorated_user.full_name
       .profile-details.columns
-        .small-4.columns.attr
-          = User.human_attribute_name(:sex)
-        .small-8.columns
-          = decorated_user.sex
-        .small-4.columns.attr
-          = User.human_attribute_name(:birthday)
-        .small-8.columns
-          = decorated_user.birthday
-        .small-4.columns.attr
-          = User.human_attribute_name(:country)
-        .small-8.columns
-          = decorated_user.country
-        .small-4.columns.attr
-          = User.human_attribute_name(:city)
-        .small-8.columns
-          = decorated_user.city
-        .small-4.columns.attr
-          = User.human_attribute_name(:work_place)
-        .small-8.columns
-          = decorated_user.work_place
-        .small-4.columns.attr
-          = User.human_attribute_name(:mobile)
-        .small-8.columns
-          = decorated_user.mobile
+        - UserDecorator::PROFILE_ATTRIBUTES.each do |attribute|
+          .small-4.columns.attr
+            = "#{User.human_attribute_name(attribute)}:"
+          .small-8.columns
+            = decorated_user.formatted_attribute(attribute)
 
       .wall.columns
         .wall-header

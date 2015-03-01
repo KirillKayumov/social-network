@@ -3,6 +3,8 @@ module Users
     before_action :configure_sign_up_params, only: :create
     before_action :configure_update_params, only: :update
 
+    expose(:decorated_resource) { resource.decorate }
+
     protected
 
     def configure_sign_up_params

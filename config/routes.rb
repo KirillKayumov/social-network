@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :users, only: %i(show edit update) do
+  resources :users, only: :show do
     resources :photos, only: %i(create index destroy)
   end
 

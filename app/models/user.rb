@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  extend Enumerize
+
   devise :database_authenticatable,
          :registerable,
          :recoverable,
@@ -21,6 +23,8 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, presence: true
   validates :mobile, format: { with: /\A((\+\d{1,3}[- ]?)|8)?\d{10}\z/ }, allow_blank: true
+
+  enumerize :sex, in: %i(male female)
 
   def unread_messages
     received_messages.sent

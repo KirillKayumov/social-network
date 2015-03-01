@@ -112,6 +112,8 @@ GEM
     email_spec (1.6.0)
       launchy (~> 2.1)
       mail (~> 2.2)
+    enumerize (0.10.0)
+      activesupport (>= 3.2)
     erubis (2.7.0)
     eventmachine (1.0.3)
     excon (0.44.2)
@@ -434,6 +436,7 @@ DEPENDENCIES
   dotenv-rails
   draper
   email_spec
+  enumerize
   factory_girl_rails
   faker
   fog

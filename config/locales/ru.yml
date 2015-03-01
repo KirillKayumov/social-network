@@ -1,4 +1,10 @@
 ru:
+  enumerize:
+    user:
+      sex:
+        male: 'Мужской'
+        female: 'Женский'
+
   navigation:
     sign_in: 'Вход'
     sign_up: 'Регистрация'

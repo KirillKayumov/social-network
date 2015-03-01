@@ -28,6 +28,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
 gem 'faker'
+gem 'enumerize'
 
 group :staging, :production do
   gem 'rails_12factor'

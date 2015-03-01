@@ -70,6 +70,13 @@ module Users
       let(:user) do
         create :user,
                first_name: 'Name1',
+               last_name: 'Surname1',
+               sex: 'male',
+               birthday: Date.today,
+               country: 'Country1',
+               city: 'City1',
+               work_place: 'Work1',
+               mobile: '81111111111',
                email: 'user@mail.com',
                password: '123123',
                password_confirmation: '123123'
@@ -80,19 +87,35 @@ module Users
           sign_in user
         end
 
-        it 'updates attributes' do
-          patch :update, user: { first_name: 'Name2', last_name: 'Surname2', city: 'Kazan' }
-          user.reload
+        context 'updating profile' do
+          before :each do
+            patch :update, user: {
+              first_name: 'Name2',
+              last_name: 'Surname2',
+              sex: 'female',
+              birthday: Date.today + 1.day,
+              country: 'Country2',
+              city: 'City2',
+              work_place: 'Work2',
+              mobile: '82222222222'
+            }
+            user.reload
+          end
 
-          expect(user.first_name).to eq('Name2')
-          expect(user.last_name).to eq('Surname2')
-          expect(user.city).to eq('Kazan')
-        end
+          it 'updates attributes' do
+            expect(user.first_name).to eq('Name2')
+            expect(user.last_name).to eq('Surname2')
+            expect(user.sex).to eq('female')
+            expect(user.birthday).to eq(Date.today + 1.day)
+            expect(user.country).to eq('Country2')
+            expect(user.city).to eq('City2')
+            expect(user.work_place).to eq('Work2')
+            expect(user.mobile).to eq('82222222222')
+          end
 
-        it 'redirects to edit page after successful updating' do
-          patch :update
-
-          expect(response).to redirect_to(edit_user_registration_path)
+          it 'redirects to edit page after successful updating' do
+            expect(response).to redirect_to(edit_user_registration_path)
+          end
         end
 
         context 'updating email' do
