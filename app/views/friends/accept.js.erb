@@ -1,0 +1,4 @@
+var friend_id = "<%= friend_id %>";
+$('.user-block[data-id=' + friend_id + ']').fadeOut('slow', function() {
+  $(this).remove();
+});

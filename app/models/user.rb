@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
 
   delegate :url, to: :avatar, prefix: true
 
+  has_many :friends, -> { where(friendships: { status: 'accepted' }) }, through: :friendships
   has_many :friendships, dependent: :destroy
-  has_many :friends, through: :friendships
   has_many :posts, class_name: :Post, foreign_key: :author_id
   has_many :wall_posts, class_name: :Post, foreign_key: :owner_id, dependent: :destroy
   has_many :likes
@@ -24,25 +24,35 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, presence: true
   validates :mobile, format: { with: /\A((\+\d{1,3}[- ]?)|8)?\d{10}\z/ }, allow_blank: true
 
+  scope :ordered, -> { order(first_name: :asc, last_name: :asc) }
+
   enumerize :sex, in: %i(male female)
 
-  def unread_messages
-    received_messages.sent
+  def friend_of?(user)
+    friendship_with(user).accepted?
   end
 
-  def accepted_friends
-    User.joins(:friendships).where(friendships: { friend_id: id, status: 'accepted' })
+  def pending_friend_of?(user)
+    friendship_with(user).pending?
+  end
+
+  def friendship_with(user)
+    friendships.find_by(friend_id: user.id) || Null::Friendship.new
+  end
+
+  def friend_invitations_number
+    Friendship.pending.where(friend_id: id).count
   end
 
   def pending_friends
     User.joins(:friendships).where(friendships: { friend_id: id, status: 'pending' })
   end
 
-  def pending_friendships
-    Friendship.pending.where(friend_id: id)
+  def unread_messages
+    received_messages.sent
   end
 
-  def friendship_with(user)
-    friendships.find_by(friend_id: user.id)
-  end
+  # def pending_friendships
+  #   Friendship.pending.where(friend_id: id)
+  # end
 end

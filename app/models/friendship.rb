@@ -1,11 +1,10 @@
 class Friendship < ActiveRecord::Base
-  STATUSES = %w(pending accepted)
+  extend Enumerize
 
   belongs_to :user
   belongs_to :friend, class_name: 'User', foreign_key: 'friend_id'
 
   validates :user_id, presence: true, uniqueness: { scope: :friend_id }
-  validates :status, inclusion: { in: STATUSES }
   validates :friend_id, presence: true
   validate :friendship_with_oneself
   validate :pending_request_from_friends
@@ -13,16 +12,10 @@ class Friendship < ActiveRecord::Base
   scope :pending, -> { where(status: 'pending') }
   scope :accepted, -> { where(status: 'accepted') }
 
+  enumerize :status, in: %i(pending accepted), default: :pending, predicates: true
+
   def reversed
     Friendship.find_by(user_id: friend_id, friend_id: user_id)
-  end
-
-  def pending?
-    status == 'pending'
-  end
-
-  def accepted?
-    status == 'accepted'
   end
 
   protected

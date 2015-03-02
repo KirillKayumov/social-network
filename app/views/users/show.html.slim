@@ -1,24 +1,7 @@
 .profile-block
   .small-4.columns.narrow-column
     = image_tag(decorated_user.avatar_url(:profile))
-    - if user != current_user
-      - if current_user.friendship_with(user) && current_user.friendship_with(user).accepted?
-        .actions
-          a.button.split.expand.small href=new_message_path(receiver_id: user.id)
-            = t('new_message')
-            span data-dropdown="drop"
-          ul.f-dropdown id="drop" data-dropdown-content=true
-            li
-              = link_to t('friends'), user_friends_path(user)
-            li
-              = link_to t('photos'), user_photos_path(user)
-            li
-              = link_to t('remove_friend'), friendship_path(current_user.friendship_with(user)), method: :delete
-      - elsif !current_user.friendship_with(user)
-        .actions
-          = simple_form_for :friendship, url: friendships_path, method: :post do |f|
-            = f.input :friend_id, as: :hidden, input_html: { value: user.id }
-            = f.button :submit, class: 'small expand'
+    = render 'profile_actions', user: user, current_user: current_user
 
   .small-8.columns.wide-column
     .profile-info

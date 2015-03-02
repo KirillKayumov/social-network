@@ -1,0 +1,6 @@
+$('.narrow-column .actions').replaceWith(
+  "<%= escape_javascript(render 'users/profile_actions', user: friend, current_user: current_user) %>"
+);
+
+var friend_id = '<%= friend_id %>';
+$('.user-block[data-id=' + friend_id + '] .actions').html("<%= t('invitation_sent') %>");

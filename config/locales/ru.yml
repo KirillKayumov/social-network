@@ -40,7 +40,7 @@ ru:
   sign_in: 'Войти'
   sign_up: 'Зарегистрироваться'
   you_are_friends: 'Вы друзья'
-  invite_sent: 'Ваш запрос отправлен'
+  invitation_sent: 'Вы отправили заявку'
   remove_friend: 'Убрать из друзей'
   accept: 'Принять'
   reject: 'Отклонить'
@@ -65,12 +65,13 @@ ru:
   message: 'Сообщение'
   receiver: 'Получатель'
   reply: 'Ответить'
+  add_friend: 'Добавить в друзья'
 
   helpers:
     submit:
       profile:
         update: 'Обновить профиль'
-      friendship:
+      friend:
         submit: 'Добавить в друзья'
       user:
         update: 'Сохранить изменения'

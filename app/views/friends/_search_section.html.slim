@@ -1,0 +1,17 @@
+.find-friends
+  - decorated_people.each do |user|
+    .user-block.columns data-id=user.object.id
+      .small-2.avatar.columns
+        ul.clearing-thumbs data-clearing=true
+          li
+            a href=user.avatar_url
+              = image_tag(user.avatar_url(:friends_list))
+      .small-6.columns.info
+        = link_to user.full_name, user_path(user)
+      .small-4.columns.actions
+        - if current_user.pending_friend_of?(user.object)
+          = t('invitation_sent')
+        - else
+          = simple_form_for :friend, url: user_friends_path(current_user), method: :post, remote: true do |f|
+            = f.input :id, as: :hidden, input_html: { value: user.object.id }
+            = f.button :submit, class: 'small expand'

@@ -1,0 +1,25 @@
+.pending-friends
+  - decorated_pending_friends.each do |friend|
+    .user-block.columns data-id=friend.object.id
+      .small-2.avatar.columns
+        a href=user_path(friend)
+          = image_tag(friend.avatar_url(:friends_list))
+      .small-6.columns.info
+        = link_to friend.full_name, user_path(friend)
+      .small-4.columns
+        .small-11.columns
+          ul.actions
+            li
+              = link_to( \
+                t('accept'),
+                accept_user_friend_path(current_user, friend),
+                method: 'post',
+                remote: true, \
+              )
+            li
+              = link_to( \
+                t('reject'),
+                reject_user_friend_path(current_user, friend),
+                method: 'delete',
+                remote: true, \
+              )

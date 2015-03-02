@@ -1,0 +1,32 @@
+.all-friends
+  .friends-count
+    span
+      = "#{t('friends')}: "
+    span#friends-number
+      = decorated_friends.size
+  - decorated_friends.each do |friend|
+    .user-block.columns data-id=friend.object.id
+      .small-2.avatar.columns
+        ul.clearing-thumbs data-clearing=true
+          li
+            a href=friend.avatar_url
+              = image_tag(friend.avatar_url(:friends_list))
+      .small-6.columns.info
+        = link_to friend.full_name, user_path(friend)
+      .small-4.columns
+        .small-11.columns
+          ul.actions
+            li
+              = link_to t('new_message'), new_message_path(receiver_id: friend.object.id)
+            li
+              = link_to t('friends_of_friend'), user_friends_path(friend)
+            - if user == current_user
+              li
+                = link_to( \
+                  t('remove_friend'),
+                  user_friend_path(current_user, friend),
+                  method: :delete,
+                  remote: true,
+                  data: { confirm: t('are_you_sure') },
+                  class: 'remove-friend' \
+                )

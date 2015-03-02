@@ -7,19 +7,23 @@ Rails.application.routes.draw do
   }
 
   resources :users, only: :show do
+    resources :friends, only: %i(index create destroy) do
+      member do
+        post 'accept', to: 'friends#accept', as: 'accept'
+        delete 'reject', to: 'friends#reject', as: 'reject'
+      end
+    end
     resources :photos, only: %i(create index destroy)
   end
 
   resources :messages, only: %i(index show new create destroy)
 
-  resources :friendships, only: %i(create destroy) do
-    member do
-      patch 'accept', to: 'friendships#accept', as: :accept
-      delete 'reject', to: 'friendships#reject', as: :reject
-    end
-  end
-
-  get 'users/:user_id/friends', to: 'friendships#index', as: :user_friends
+  # resources :friendships, only: %i(create destroy) do
+  #   member do
+  #     patch 'accept', to: 'friendships#accept', as: :accept
+  #     delete 'reject', to: 'friendships#reject', as: :reject
+  #   end
+  # end
 
   resources :posts, only: %i(create destroy) do
     post 'like', to: 'likes#create', as: :create_like
