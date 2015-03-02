@@ -1,8 +1,6 @@
 var section = '<%= section %>';
 if (section == 'requests') {
   $('.friends-content').html("<%= j(render 'requests_section') %>");
-} else if (section == 'search') {
-  $('.friends-content').html("<%= j(render 'search_section') %>");
 } else {
   $('.friends-content').html("<%= j(render 'friends_section') %>");
 }

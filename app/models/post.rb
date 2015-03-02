@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
 
   validates :text, :owner_id, :author_id, presence: true
 
-  scope :reversed, -> { order(created_at: :desc) }
+  scope :ordered, -> { order(created_at: :desc) }
 
   def like_of(user)
     likes.find_by(user_id: user.id)

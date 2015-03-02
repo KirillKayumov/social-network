@@ -5,8 +5,6 @@ class FriendsController < ApplicationController
   expose(:friendship) do
     Friendship.find_by(user_id: params[:id], friend_id: params[:user_id])
   end
-  expose(:people) { User.where.not(id: user.friends).where.not(id: user.id).ordered }
-  expose(:decorated_people) { people.decorate }
 
   def index
     respond_to do |format|

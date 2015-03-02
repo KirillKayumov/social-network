@@ -19,7 +19,7 @@
           span
             = "#{t('posts')}: "
           span#posts-number
-            = posts.size
+            = decorated_posts.size
           = simple_form_for :post, url: posts_path, method: :post do |f|
             = f.input :owner_id, as: :hidden, input_html: { value: user.id }
             = f.input :text, as: :text, placeholder: t('new_post'), label: false, input_html: { rows: 3 }
@@ -54,8 +54,3 @@
                     - else
                       a.right.like href==post_destroy_like_path(post.object) data-method='post'
                         i.fi-like
-
-/ - if user != current_user
-/   = simple_form_for :friendship, url: friendships_path, method: :post do |f|
-/     = f.input :friend_id, as: :hidden, input_html: { value: user.id }
-/     = f.button :submit

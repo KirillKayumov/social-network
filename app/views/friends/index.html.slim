@@ -1,19 +1,18 @@
 .friends-list
   .small-12.columns
     dl.sub-nav.friends-panel
-      dd class="#{'active' if params[:section] == 'all' || params[:section].nil?}"
-        = link_to t('all_friends'), user_friends_path(current_user, section: 'all'), remote: true
+      dd.active
+        = link_to t('all_friends'), user_friends_path(current_user), remote: true
 
       - if user == current_user
-        dd class="#{'active' if params[:section] == 'requests'}"
+        dd
           = link_to "#{t('pending_friends')} (#{friend_invitations_number})", user_friends_path(current_user, section: 'requests'), remote: true
-        dd class="#{'active' if params[:section] == 'search'}"
-          = link_to t('find_friends'), user_friends_path(current_user, section: 'search'), remote: true
+        dd
+          = link_to t('find_friends'), users_path, remote: true
+
 
     .friends-content
       - if params[:section] == 'requests'
         = render 'requests_section'
-      - elsif params[:section] == 'search'
-        = render 'search_section'
       - else
         = render 'friends_section'

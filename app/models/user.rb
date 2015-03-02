@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :friends, -> { where(friendships: { status: 'accepted' }) }, through: :friendships
   has_many :friendships, dependent: :destroy
   has_many :posts, class_name: :Post, foreign_key: :author_id
-  has_many :wall_posts, class_name: :Post, foreign_key: :owner_id, dependent: :destroy
+  has_many :wall_posts, -> { ordered }, class_name: :Post, foreign_key: :owner_id, dependent: :destroy
   has_many :likes
   has_many :photos, dependent: :destroy
   has_many :received_messages, class_name: 'Message', foreign_key: 'receiver_id'
@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
   scope :ordered, -> { order(first_name: :asc, last_name: :asc) }
 
   enumerize :sex, in: %i(male female)
+
+  def not_friends
+    User.where.not(id: friends.pluck(:id).push(id))
+  end
 
   def friend_of?(user)
     friendship_with(user).accepted?

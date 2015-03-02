@@ -22,19 +22,6 @@ describe FriendsController, type: :controller do
         expect(response).to render_template(:index)
       end
     end
-
-    it 'exposes people' do
-      Friendship.create(user_id: user.id, friend_id: friend.id, status: 'accepted')
-      Friendship.create(user_id: friend.id, friend_id: user.id, status: 'accepted')
-      user2 = create :user, first_name: 'A', last_name: 'A'
-      Friendship.create(user_id: user.id, friend_id: user2.id, status: 'pending')
-      user3 = create :user, first_name: 'A', last_name: 'B'
-      Friendship.create(user_id: user3.id, friend_id: user.id, status: 'pending')
-      user4 = create :user, first_name: 'B', last_name: 'A'
-
-      get :index, user_id: user.id
-      expect(controller.people).to eq([user2, user3, user4])
-    end
   end
 
   describe 'POST #create' do
